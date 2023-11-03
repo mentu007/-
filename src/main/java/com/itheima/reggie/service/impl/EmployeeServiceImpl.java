@@ -84,6 +84,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void save(HttpSession session, Employee employee) {
 
+        LambdaQueryWrapper<Employee> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Employee::getUsername,employee.getUsername());
+
+        Integer count = employeeMapper.selectCount(wrapper);
+        if (count >0){
+            throw new BusinessException("账号【"+employee.getUsername()+"】已存在");
+        }
+
+
         employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
 
         employee.setStatus(1);
