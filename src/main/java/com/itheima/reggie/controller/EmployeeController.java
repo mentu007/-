@@ -20,7 +20,21 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @PostMapping("/login")
+    public R<Employee> login(HttpSession session, @RequestBody Employee employee){
+        R<Employee> r = this.employeeService.login(session,employee);
+        return r;
+    }
 
-
+    @PostMapping("/logout")
+    public R<String> logout(HttpSession session){
+        session.invalidate();
+        return R.success("退出成功");
+    }
+    @PostMapping
+    public R<String> logout(HttpSession session,@RequestBody Employee employee){
+        employeeService.save(session,employee);
+        return R.success("新增员工成功成功");
+    }
 
 }    
