@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class PageResult<T> implements Serializable {
     private Long total = 0l;
+    //0l什么意思？
     private List<T> records = Collections.emptyList();
 
 }

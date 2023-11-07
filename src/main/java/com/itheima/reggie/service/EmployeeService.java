@@ -12,4 +12,6 @@ public interface EmployeeService {
     R<Employee> login(HttpSession session, Employee employee);
 
     void save(HttpSession session, Employee employee);
+
+    PageResult page(Integer page, Integer pagesize);
 }

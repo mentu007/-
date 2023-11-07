@@ -108,6 +108,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     }
+
+    @Override
+    public PageResult page(Integer wPage, Integer wPagesize) {
+
+        Page page = new Page<>(wPage,wPagesize);
+
+        LambdaQueryWrapper<Employee> lqw = new LambdaQueryWrapper<>();
+        employeeMapper.selectPage(page,lqw);
+
+        return new PageResult(page.getTotal(),page.getRecords());
+
+
+
+    }
 }
 
 
