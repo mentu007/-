@@ -23,8 +23,3 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: ASSIGN_ID
-
-# 文件下载的本地存储地址
-reggie:
-  path: D:\Code_APP-Data\project-img\
-  # BC：这里存储目录下 递减斜线
